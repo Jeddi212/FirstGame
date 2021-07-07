@@ -6,6 +6,7 @@
 package com.Game;
 
 import java.awt.*;
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 /**
@@ -13,7 +14,7 @@ import java.util.LinkedList;
  */
 public class Handler {
 
-    LinkedList<GameObject> object = new LinkedList<>();
+    ArrayList<GameObject> object = new ArrayList<>();
 
     public void tick() {
         for (int i = 0; i < object.size(); i++) {
@@ -36,7 +37,7 @@ public class Handler {
             if (tempObject.getId() == ID.Player) {
                 object.clear();
                 if (Game.gameState != Game.STATE.END)
-                addObject(new Playesr((int) tempObject.getX(), (int) tempObject.getY(), ID.Player, this));
+                addObject(new Player((int) tempObject.getX(), (int) tempObject.getY(), ID.Player, this));
             }
         }
     }

@@ -12,10 +12,10 @@ public class Game extends Canvas implements Runnable {
     private boolean running = false;
 
     private final Random r;
-    private final Handler handler = new Handler();
-    private final HUD hud = new HUD();
+    private final Handler handler;
+    private final HUD hud;
     private final Spawn spawner;
-    private final Menu menu = new Menu(handler, hud);
+    private final Menu menu;
 
     public enum STATE {
         MENU,
@@ -27,6 +27,10 @@ public class Game extends Canvas implements Runnable {
     public static STATE gameState = STATE.MENU;
 
     public Game() {
+
+        handler = new Handler();
+        hud = new HUD();
+        menu = new Menu(handler, hud);
 
         this.addKeyListener(new KeyInput(handler));
         this.addMouseListener(menu);
@@ -112,7 +116,7 @@ public class Game extends Canvas implements Runnable {
             if (HUD.HEATLH <= 0) {
                 HUD.HEATLH = 100;
                 gameState = STATE.END;
-                handler.clearEnemies();
+                handler.object.clear();
                 for (int i = 0; i < 20; i++) {
                     handler.addObject(new MenuParticle(r.nextInt(WIDTH), r.nextInt(HEIGHT), ID.ManuParticle, handler));
                 }
