@@ -43,7 +43,8 @@ public class Player extends GameObject {
 
             if (tempObject.getId() == ID.BasicEnemy
                     || tempObject.getId() == ID.FastEnemy
-                    || tempObject.getId() == ID.SmartEnemy) {
+                    || tempObject.getId() == ID.SmartEnemy
+                    || tempObject.getId() == ID.EnemyBoss) {
                 if (getBounds().intersects(tempObject.getBounds())) {
                     // Collision code
                     HUD.HEATLH -= 2;
